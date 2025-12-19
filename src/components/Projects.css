@@ -1,0 +1,124 @@
+.projects-section {
+  background-color: var(--bg-primary);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--bg-tertiary);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--bg-tertiary);
+  box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.4);
+}
+
+.project-image-placeholder {
+  height: 200px;
+  background: var(--bg-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.project-icon {
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  background-size: cover; 
+  background-position: center;
+}
+
+/* Fallback abstract gradients */
+.icon-0 {
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+}
+.icon-1 {
+  background: linear-gradient(45deg, #ec4899, #ef4444);
+}
+.icon-2 {
+  background: linear-gradient(45deg, #10b981, #3b82f6);
+}
+
+.project-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-title {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.project-description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.project-tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.project-link {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  flex: 1;
+  transition: all 0.2s ease;
+}
+
+.code-link {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.code-link:hover {
+  background: var(--text-tertiary);
+}
+
+.demo-link {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+.demo-link:hover {
+  background: #e4e4e7;
+}
