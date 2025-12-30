@@ -1,29 +1,41 @@
 import React from 'react';
 import './Projects.css';
+import ganImg from '../assets/GAN.jpeg';
+import captionImg from '../assets/imagecaptioning.jpeg';
+import fakeNewsImg from '../assets/fakenews.jpeg';
 
-// Placeholder images since we don't have project screenshots yet. 
-// Using gradients or abstract patterns would be better than broken links.
 const projects = [
-  {
-    title: "Telephony GenAI Voicebot",
-    description: "End-to-end telephony GenAI voicebot for customer support, integrating streaming ASR, LLM, and TTS for sub-second latency conversions.",
-    tags: ["Twilio/Plivo", "FastAPI", "OpenAI", "WebSockets"],
-    link: "https://github.com/seemanth-raju",
-    demo: "#"
-  },
-  {
-    title: "Smart Glasses Backend",
-    description: "Python backend for AR smart glasses featuring scene description, OCR, object detection, and LLM Q&A with 95% uptime.",
-    tags: ["Python", "Computer Vision", "OCR", "LLM"],
-    link: "https://github.com/seemanth-raju",
-    demo: "#"
-  },
   {
     title: "PCAP Flow Analysis Pipeline",
     description: "High-performance pipeline processing 1GB+ PCAP files to detect anomalies and SYN flood attacks using K-Means clustering.",
     tags: ["Python", "Scapy", "Scikit-learn", "Cybersecurity"],
     link: "https://github.com/seemanth-raju",
-    demo: "#"
+    demo: "#",
+    image: null // No image provided for this one yet
+  },
+  {
+    title: "Fake News Detector",
+    description: "Machine Learning model to identify and classify fake news articles with high accuracy.",
+    tags: ["Python", "ML", "NLP", "Scikit-learn"],
+    link: "https://github.com/seemanth-raju/Fake_News_Detector",
+    demo: "#",
+    image: fakeNewsImg
+  },
+  {
+    title: "Image Captioning",
+    description: "Deep Learning model using CNN encoder and Transformer decoder to generate descriptive captions for images.",
+    tags: ["Python", "PyTorch", "CNN", "Transformer"],
+    link: "https://github.com/seemanth-raju/Image_captioning",
+    demo: "#",
+    image: captionImg
+  },
+  {
+    title: "GAN Face Generation",
+    description: "Generative Adversarial Network architecture trained to generate realistic human faces from random noise.",
+    tags: ["Python", "TensorFlow/Keras", "GAN", "Deep Learning"],
+    link: "https://github.com/seemanth-raju/GAN",
+    demo: "#",
+    image: ganImg
   }
 ];
 
@@ -35,8 +47,12 @@ const Projects = () => {
         <div className="projects-grid">
           {projects.map((project, index) => (
             <div key={index} className="project-card">
-               <div className="project-image-placeholder">
-                  <div className={`project-icon icon-${index % 3}`}></div>
+               <div className="project-image-wrapper">
+                  {project.image ? (
+                    <img src={project.image} alt={project.title} className="project-image" />
+                  ) : (
+                    <div className={`project-icon icon-${index % 3}`}></div>
+                  )}
                </div>
               <div className="project-content">
                 <h3 className="project-title">{project.title}</h3>

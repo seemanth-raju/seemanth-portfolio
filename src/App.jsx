@@ -10,22 +10,36 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
 function App() {
+  const containerRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleMouseMove = (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      container.style.setProperty('--mouse-x', `${x}px`);
+      container.style.setProperty('--mouse-y', `${y}px`);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   return (
     <Router>
-      <div className="App">
+      <div className="App" ref={containerRef}>
+        <div className="global-spotlight-overlay"></div>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={
-            <div className="page-content">
-              <About />
-              <Skills />
-              <Experience />
-              <Projects />
-              <Contact />
-            </div>
-          } />
-        </Routes>
+        <Home />
+        <div id="about" className="page-content">
+          <About />
+          <Skills />
+          <Experience />
+          <Projects />
+          <Contact />
+        </div>
       </div>
     </Router>
   );

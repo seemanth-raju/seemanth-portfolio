@@ -35,12 +35,12 @@ const Navbar = () => {
       <div className="container navbar-content">
         <Link to="/" className="logo">Seemanth.</Link>
         <ul className="nav-links">
-          <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link></li>
-          <li><Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>About</Link></li>
-          <li><a href="/about#skills" onClick={(e) => handleNav(e, 'skills')}>Skills</a></li>
-          <li><a href="/about#experience" onClick={(e) => handleNav(e, 'experience')}>Experience</a></li>
-          <li><a href="/about#projects" onClick={(e) => handleNav(e, 'projects')}>Projects</a></li>
-          <li><a href="/about#contact" onClick={(e) => handleNav(e, 'contact')}>Contact</a></li>
+          <li><a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
     </nav>
