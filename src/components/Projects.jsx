@@ -5,14 +5,14 @@ import captionImg from '../assets/imagecaptioning.jpeg';
 import fakeNewsImg from '../assets/fakenews.jpeg';
 
 const projects = [
-  {
-    title: "PCAP Flow Analysis Pipeline",
-    description: "High-performance pipeline processing 1GB+ PCAP files to detect anomalies and SYN flood attacks using K-Means clustering.",
-    tags: ["Python", "Scapy", "Scikit-learn", "Cybersecurity"],
-    link: "https://github.com/seemanth-raju",
-    demo: "#",
-    image: null // No image provided for this one yet
-  },
+  // {
+  //   title: "PCAP Flow Analysis Pipeline",
+  //   description: "High-performance pipeline processing 1GB+ PCAP files to detect anomalies and SYN flood attacks using K-Means clustering.",
+  //   tags: ["Python", "Scapy", "Scikit-learn", "Cybersecurity"],
+  //   link: "https://github.com/seemanth-raju",
+  //   demo: "#",
+  //   image: null // No image provided for this one yet
+  // },
   {
     title: "Fake News Detector",
     description: "Machine Learning model to identify and classify fake news articles with high accuracy.",
