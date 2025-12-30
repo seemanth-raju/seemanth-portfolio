@@ -1,8 +1,42 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { FiMail, FiPhone, FiMapPin, FiShare2, FiGithub, FiLinkedin } from 'react-icons/fi';
 import './Contact.css';
 
 const Contact = () => {
+  const form = useRef();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        form.current,
+        {
+          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+        }
+      )
+      .then(
+        () => {
+          console.log('SUCCESS!');
+          setSubmitStatus('success');
+          setIsSubmitting(false);
+          form.current.reset();
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+          setSubmitStatus('error');
+          setIsSubmitting(false);
+        },
+      );
+  };
+
   return (
     <section id="contact" className="section contact-section">
       <div className="container">
@@ -49,25 +83,31 @@ const Contact = () => {
             </div>
           </div>
 
-          <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+          <form ref={form} className="contact-form" onSubmit={sendEmail}>
             <h3 className="form-title">Send a Message</h3>
             <div className="form-group-row">
               <div className="form-group">
-                <input type="text" placeholder="Your Name" />
+                <input type="text" name="user_name" placeholder="Your Name" required />
               </div>
               <div className="form-group">
-                <input type="email" placeholder="Your Email" />
+                <input type="email" name="user_email" placeholder="Your Email" required />
               </div>
             </div>
             <div className="form-group">
-              <input type="text" placeholder="Subject" />
+              <input type="text" name="subject" placeholder="Subject" required />
             </div>
             <div className="form-group">
-              <textarea placeholder="Your Message" rows="5"></textarea>
+              <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
             </div>
-            <button type="submit" className="submit-btn" onClick={() => window.location.href = "mailto:seemanth.kurapati@gmail.com"}>
-              Build Something Great
+            <button type="submit" className="submit-btn" disabled={isSubmitting}>
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
+            {submitStatus === 'success' && (
+              <p className="status-message success">Message sent successfully!</p>
+            )}
+            {submitStatus === 'error' && (
+              <p className="status-message error">Failed to send message. Please try again.</p>
+            )}
           </form>
         </div>
 
